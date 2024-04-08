@@ -1,0 +1,9 @@
+net: DBnet
+stop_value: {"fmeasure": 0.79}
+backbone:
+    initializer: resnet18
+    pretrained: True
+    backbone_ckpt: "./pretrained/resnet18-5c106cde.ckpt" # If on modelarts, set the name of checkpoint saved in data_url
+optimizer:
+    lr:
+        base_lr: 0.007

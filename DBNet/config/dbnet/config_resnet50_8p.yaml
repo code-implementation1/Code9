@@ -1,0 +1,22 @@
+net: DBnet
+device_num: 8
+eval_start_epoch: 1000
+eval_interval: 50
+stop_value: {"recall": 0.77, "precision": 0.85, "fmeasure": 0.81}
+backbone:
+    initializer: resnet50
+    pretrained: True
+    backbone_ckpt: "./pretrained/resnet50-19c8e357.ckpt" # If on modelarts, set the name of checkpoint saved in data_url
+segdetector:
+    in_channels: [256, 512, 1024, 2048]  # R18: [64, 128, 256, 512]
+optimizer:
+    lr:
+        base_lr: 0.02
+dataset:
+    num_workers: 12
+    prefetch_size: 20
+train:
+    total_epochs: 2000
+    batch_size: 8
+eval:
+    box_thresh: 0.6
